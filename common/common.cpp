@@ -29,3 +29,10 @@ void recieve_data(void *buffer, size_t bufsiz, int recsiz)
 		tracer[i] = Wire.read();
 	}
 }
+
+void send_data(void *data, size_t datasiz, uint8_t addr)
+{
+	Wire.beginTransmission(addr);
+	Wire.write((uint8_t*) data, datasiz);
+	Wire.endTransmission();
+}
