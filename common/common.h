@@ -29,7 +29,7 @@
 #define I2C_SLAVE_3 0x03
 #define I2C_SLAVE_4 0x04
 
-void recieve_data(void *buffer, size_t bufsiz, int recsiz);
+void receive_data(void *buffer, size_t bufsiz, int recsiz);
 void send_data(void *data, size_t datasiz, uint8_t addr);
 
 #endif /* COMMON_H */

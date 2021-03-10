@@ -19,7 +19,7 @@
 #include "common.h"
 
 
-void recieve_data(void *buffer, size_t bufsiz, int recsiz)
+void receive_data(void *buffer, size_t bufsiz, int recsiz)
 {
 	memset(buffer, 0, bufsiz);
 
