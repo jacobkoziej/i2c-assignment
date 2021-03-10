@@ -31,9 +31,16 @@ void setup()
 	i2c_datasiz = sizeof(msg_buffer);
 
 	Serial.begin(9600);
+
 	Wire.begin(I2C_SLAVE_1);
+	Wire.onReceive(i2c_receive_handler);
 }
 
 void loop()
 {
+}
+
+void i2c_receive_handler(int bytes)
+{
+	receive_data(i2c_data, i2c_datasiz, bytes);
 }
