@@ -17,3 +17,15 @@
  */
 
 #include "common.h"
+
+
+void recieve_data(void *buffer, size_t bufsiz, int recsiz)
+{
+	memset(buffer, 0, bufsiz);
+
+	uint8_t *tracer = (uint8_t*) buffer;
+
+	for (uint16_t i = 0; i < bufsiz && i < recsiz; i++) {
+		tracer[i] = Wire.read();
+	}
+}

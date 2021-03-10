@@ -20,6 +20,7 @@
 #define COMMON_H
 
 #include <Arduino.h>
+#include <Wire.h>
 
 
 // addresses
@@ -27,5 +28,7 @@
 #define I2C_SLAVE_2 0x02
 #define I2C_SLAVE_3 0x03
 #define I2C_SLAVE_4 0x04
+
+void recieve_data(void *buffer, size_t bufsiz, int recsiz);
 
 #endif /* COMMON_H */
