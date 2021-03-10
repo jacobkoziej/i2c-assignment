@@ -20,9 +20,16 @@
 
 #include "common.h"
 
+char msg_buffer[11];
+void *i2c_data;
+size_t i2c_datasiz;
+
 
 void setup()
 {
+	i2c_data    = msg_buffer;
+	i2c_datasiz = sizeof(msg_buffer);
+
 	Serial.begin(9600);
 	Wire.begin(I2C_SLAVE_1);
 }
