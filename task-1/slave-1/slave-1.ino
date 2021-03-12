@@ -39,7 +39,7 @@ void setup()
 void loop()
 {
 	Serial.print("Bytes in:");
-	for (uint8_t i = 0; i < 6; i++) {
+	for (uint8_t i = 0; i < sizeof(msg_buffer); i++) {
 		Serial.print(" ");
 		Serial.print(msg_buffer[i], HEX);
 	}
