@@ -20,7 +20,7 @@
 
 #include "common.h"
 
-char msg_buffer[11];
+uint8_t msg_buffer[6];
 void *i2c_data;
 size_t i2c_datasiz;
 
