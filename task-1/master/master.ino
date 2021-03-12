@@ -28,7 +28,6 @@ char *unfunny_message = "joe mama!\?";  // 10 char + NUL-terminator
 
 void setup()
 {
-	Serial.begin(9600);
 	Wire.begin();
 }
 
