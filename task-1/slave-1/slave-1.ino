@@ -38,6 +38,12 @@ void setup()
 
 void loop()
 {
+	Serial.print("Bytes in:");
+	for (uint8_t i = 0; i < 6; i++) {
+		Serial.print(" ");
+		Serial.print(msg_buffer[i], HEX);
+	}
+	Serial.println();
 }
 
 void i2c_receive_handler(int bytes)
