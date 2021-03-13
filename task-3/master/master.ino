@@ -36,4 +36,34 @@ void loop()
 {
 	send_data(even_nums, sizeof(even_nums), I2C_SLAVE_1);
 	send_data(odd_nums,  sizeof(odd_nums),  I2C_SLAVE_2);
+
+
+	request_data(
+		req_buffer,
+		sizeof(req_buffer),
+		sizeof(req_buffer),
+		I2C_SLAVE_1
+		);
+
+	Serial.print("Slave 1:");
+	for (uint8_t i = 0; i < sizeof(req_buffer); i++) {
+		Serial.print(" ");
+		Serial.print(req_buffer[i], HEX);
+	}
+	Serial.println();
+
+
+	request_data(
+		req_buffer,
+		sizeof(req_buffer),
+		sizeof(req_buffer),
+		I2C_SLAVE_2
+		);
+
+	Serial.print("Slave 2:");
+	for (uint8_t i = 0; i < sizeof(req_buffer); i++) {
+		Serial.print(" ");
+		Serial.print(req_buffer[i], HEX);
+	}
+	Serial.println();
 }
