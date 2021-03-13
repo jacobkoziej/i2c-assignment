@@ -34,6 +34,7 @@ transducers and actuators use I2C to communicate with microcontrollers.
 ### Task 1 (Transmit)
 
 Create an I2C network of 5 Arduinos:
+
 * One of the five Arduinos will be the master
 * The other four will be slaves
 * Master will send the following data to slaves:
@@ -41,11 +42,13 @@ Create an I2C network of 5 Arduinos:
 	* An odd numbers buffer from 1 to 11 to slave 2
 	* A 10 characters string of your choice to slave 3
 	* A buffer of 2^n where n is a sequence from 0 to 5 to slave 4
+
 Print the received values to the monitor on the slave MCUs
 
 ### Task 2 (Transmit)
 
 Create an I2C network of 5 Arduinos:
+
 * One of the five Arduinos will be the master
 * The other four will be slaves
 * Master will request the following data to slaves:
@@ -53,27 +56,33 @@ Create an I2C network of 5 Arduinos:
 	* An odd numbers buffer from 1 to 11 to slave 2
 	* A 10 characters string of your choice to slave 3
 	* A buffer of 2^n where n is a sequence from 0 to 5 to slave 4
+
 Print the received values to the monitor on the slave MCUs
 
 ### Task 3 (Transceiver)
 
 Create an I2C network of 3 Arduinos:
+
 * One of the three Arduinos will be the master
 * The other two will be slaves
 * Master will send the following data to slaves:
 	* An even numbers buffer from 0 to 10 from slave 1
 	* An odd numbers buffer from 1 to 11 from slave 2
+
 Print the received values to the monitor on the slave MCUs
+
 * Master will request the following data from slaves:
 	* Double the value of the received even numbers buffer from the master
 	  for slave 1
 	* Triple the value of the received odd  numbers buffer from the master
 	  for slave 2
+
 Print the requested values upon receiving from slaves.
 
 ### Advanced Task
 
 Create an I2C network of 5 Arduinos:
+
 * One of the five Arduinos will be the master
 * The other four will be slaves
 * Slave 1: Will send a temperature sensor value to master upon request.
