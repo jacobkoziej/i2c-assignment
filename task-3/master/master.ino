@@ -34,4 +34,6 @@ void setup()
 
 void loop()
 {
+	send_data(even_nums, sizeof(even_nums), I2C_SLAVE_1);
+	send_data(odd_nums,  sizeof(odd_nums),  I2C_SLAVE_2);
 }
