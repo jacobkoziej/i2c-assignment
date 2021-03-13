@@ -20,6 +20,11 @@
 
 #include "common.h"
 
+uint8_t even_nums[6];
+uint8_t odd_nums[6];
+uint8_t some_nums[6];
+char unfunny_message[11];
+
 
 void setup()
 {
