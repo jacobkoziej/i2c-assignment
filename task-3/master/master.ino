@@ -20,6 +20,8 @@
 
 #include "common.h"
 
+#define ARTIFICIAL_DELAY 100
+
 uint8_t even_nums[6] = {0, 2, 4, 6, 8, 10};
 uint8_t odd_nums[6]  = {1, 3, 5, 7, 9, 11};
 uint8_t req_buffer[6];
@@ -36,6 +38,8 @@ void loop()
 {
 	send_data(even_nums, sizeof(even_nums), I2C_SLAVE_1);
 	send_data(odd_nums,  sizeof(odd_nums),  I2C_SLAVE_2);
+
+	delay(ARTIFICIAL_DELAY);
 
 
 	request_data(
