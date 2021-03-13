@@ -30,6 +30,15 @@ void receive_data(void *buffer, size_t bufsiz, int recsiz)
 	}
 }
 
+void request_data(void *buffer, size_t bufsiz, uint8_t reqsiz, uint8_t addr)
+{
+	Wire.requestFrom(addr, reqsiz);
+	receive_data(buffer, bufsiz, reqsiz);
+
+	// drop any data that didn't fit in the buffer
+	while (Wire.available()) Wire.read();
+}
+
 void send_data(void *data, size_t datasiz, uint8_t addr)
 {
 	Wire.beginTransmission(addr);
