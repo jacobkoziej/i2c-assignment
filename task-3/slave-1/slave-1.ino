@@ -61,5 +61,9 @@ void i2c_receive_handler(int bytes)
 
 void i2c_request_handler(void)
 {
+	// NOTE: this only works for byte arrays
+	for (uint8_t i = 0; i < i2c_datasiz; i ++)
+		*((uint8_t*) i2c_data + i) *= 2;
+
 	Wire.write((uint8_t*) i2c_data, i2c_datasiz);
 }
