@@ -30,7 +30,7 @@
 #define I2C_SLAVE_4 0x04
 
 void receive_data(void *buffer, size_t bufsiz, int recsiz);
-void request_data(void *buffer, size_t bufsiz, int reqsiz, uint8_t addr);
+void request_data(void *buffer, size_t bufsiz, uint8_t reqsiz, uint8_t addr);
 void send_data(void *data, size_t datasiz, uint8_t addr);
 
 #endif /* COMMON_H */
