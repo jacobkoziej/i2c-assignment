@@ -35,4 +35,28 @@ void setup()
 
 void loop()
 {
+	request_data(
+		even_nums,
+		sizeof(even_nums),
+		sizeof(even_nums),
+		I2C_SLAVE_1
+		);
+	request_data(
+		odd_nums,
+		sizeof(odd_nums),
+		sizeof(odd_nums),
+		I2C_SLAVE_2
+		);
+	request_data(
+		unfunny_message,
+		sizeof(unfunny_message),
+		sizeof(unfunny_message),
+		I2C_SLAVE_3
+		);
+	request_data(
+		some_nums,
+		sizeof(some_nums),
+		sizeof(some_nums),
+		I2C_SLAVE_4
+		);
 }
