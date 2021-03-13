@@ -75,7 +75,7 @@ void loop()
 	}
 	Serial.println();
 
-	Serial.print("Slave 3:");
+	Serial.print("Slave 3: ");
 	Serial.println(unfunny_message);
 
 	Serial.print("Slave 4:");
