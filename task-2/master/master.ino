@@ -59,4 +59,29 @@ void loop()
 		sizeof(some_nums),
 		I2C_SLAVE_4
 		);
+
+
+	Serial.print("Slave 1:");
+	for (uint8_t i = 0; i < sizeof(even_nums); i++) {
+		Serial.print(" ");
+		Serial.print(even_nums[i], HEX);
+	}
+	Serial.println();
+
+	Serial.print("Slave 2:");
+	for (uint8_t i = 0; i < sizeof(odd_nums); i++) {
+		Serial.print(" ");
+		Serial.print(odd_nums[i], HEX);
+	}
+	Serial.println();
+
+	Serial.print("Slave 3:");
+	Serial.println(unfunny_message);
+
+	Serial.print("Slave 4:");
+	for (uint8_t i = 0; i < sizeof(some_nums); i++) {
+		Serial.print(" ");
+		Serial.print(some_nums[i], HEX);
+	}
+	Serial.println();
 }
