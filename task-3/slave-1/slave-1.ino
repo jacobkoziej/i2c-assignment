@@ -24,6 +24,8 @@ uint8_t msg_buffer[6];
 void *i2c_data;
 size_t i2c_datasiz;
 
+volatile bool new_data = false;
+
 
 void setup()
 {
@@ -39,17 +41,22 @@ void setup()
 
 void loop()
 {
-	Serial.print("Bytes in:");
-	for (uint8_t i = 0; i < sizeof(msg_buffer); i++) {
-		Serial.print(" ");
-		Serial.print(msg_buffer[i], HEX);
+	if (new_data) {
+		Serial.print("Bytes in:");
+		for (uint8_t i = 0; i < sizeof(msg_buffer); i++) {
+			Serial.print(" ");
+			Serial.print(msg_buffer[i], HEX);
+		}
+		Serial.println();
+
+		new_data = false;
 	}
-	Serial.println();
 }
 
 void i2c_receive_handler(int bytes)
 {
 	receive_data(i2c_data, i2c_datasiz, bytes);
+	new_data = true;
 }
 
 void i2c_request_handler(void)
