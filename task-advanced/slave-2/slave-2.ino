@@ -20,6 +20,8 @@
 
 #include "common.h"
 
+#define MOTOR_PORT 3
+
 uint8_t motor_speed;
 void *i2c_data;
 size_t i2c_datasiz;
@@ -27,6 +29,8 @@ size_t i2c_datasiz;
 
 void setup()
 {
+	pinMode(MOTOR_PORT, OUTPUT);
+
 	i2c_data    = &motor_speed;
 	i2c_datasiz = sizeof(motor_speed);
 
@@ -36,6 +40,7 @@ void setup()
 
 void loop()
 {
+	analogWrite(MOTOR_PORT, motor_speed);
 }
 
 void i2c_receive_handler(int bytes)
