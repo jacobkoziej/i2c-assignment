@@ -20,6 +20,8 @@
 
 #include "common.h"
 
+#define TMP36 A3
+
 float temp_f;
 void *i2c_data;
 size_t i2c_datasiz;
@@ -27,6 +29,8 @@ size_t i2c_datasiz;
 
 void setup()
 {
+	pinMode(TMP36, INPUT);
+
 	i2c_data    = temp_f;
 	i2c_datasiz = sizeof(temp_f);
 
