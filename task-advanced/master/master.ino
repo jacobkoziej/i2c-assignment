@@ -20,6 +20,9 @@
 
 #include "common.h"
 
+#define TEMPERATURE_LIMIT_HIGH_F 100.0
+#define TEMPERATURE_LIMIT_LOW_F  32.0
+
 
 void setup()
 {
@@ -35,4 +38,14 @@ void loop()
 		sizeof(temp_reading),
 		I2C_SLAVE_1
 		);
+
+	uint8_t motor_speed = map(
+			constrain(temp_reading,
+				TEMPERATURE_LIMIT_LOW_F,
+				TEMPERATURE_LIMIT_HIGH_F),
+			TEMPERATURE_LIMIT_LOW_F,
+			TEMPERATURE_LIMIT_HIGH_F,
+			0x00,
+			0xFF
+			);
 }
