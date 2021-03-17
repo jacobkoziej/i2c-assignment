@@ -28,8 +28,7 @@ void setup()
 
 void loop()
 {
-	uint16_t temp_reading;
-
+	float temp_reading;
 	request_data(
 		&temp_reading,
 		sizeof(temp_reading),
