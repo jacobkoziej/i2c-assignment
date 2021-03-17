@@ -31,7 +31,7 @@ void setup()
 {
 	pinMode(TMP36, INPUT);
 
-	i2c_data    = temp_f;
+	i2c_data    = &temp_f;
 	i2c_datasiz = sizeof(temp_f);
 
 	Wire.begin(I2C_SLAVE_1);
