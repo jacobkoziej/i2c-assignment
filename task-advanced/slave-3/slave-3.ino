@@ -20,6 +20,8 @@
 
 #include "common.h"
 
+#define RGB_LED 9  // base index for RGB LED
+
 uint8_t color[3];
 void *i2c_data;
 size_t i2c_datasiz;
@@ -27,6 +29,9 @@ size_t i2c_datasiz;
 
 void setup()
 {
+	for (uint8_t i = 0; i < 3; i++)
+		pinMode(RGB_LED + i, OUTPUT);
+
 	i2c_data    = color;
 	i2c_datasiz = sizeof(color);
 
@@ -36,6 +41,8 @@ void setup()
 
 void loop()
 {
+	for (uint8_t i = 0; i < 3; i++)
+		analogWrite(RGB_LED + i, color[i]);
 }
 
 void i2c_receive_handler(int bytes)
