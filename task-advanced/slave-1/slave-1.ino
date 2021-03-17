@@ -35,14 +35,14 @@ void setup()
 	i2c_datasiz = sizeof(temp_f);
 
 	Wire.begin(I2C_SLAVE_1);
-	Wire.onReceive(i2c_receive_handler);
+	Wire.onRequest(i2c_request_handler);
 }
 
 void loop()
 {
 }
 
-void i2c_receive_handler(int bytes)
+void i2c_request_handler(void)
 {
-	receive_data(i2c_data, i2c_datasiz, bytes);
+	Wire.write((uint8_t*) i2c_data, i2c_datasiz);
 }
