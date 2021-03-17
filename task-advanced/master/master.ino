@@ -1,5 +1,5 @@
 /*
- * Task Advnaced (master)
+ * Task Advanced (master)
  * Copyright (C) 2021  Jacob Koziej <jacobkoziej@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
