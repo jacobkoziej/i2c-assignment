@@ -21,6 +21,7 @@
 #include "common.h"
 
 #define TMP36 A3
+#define TMP36_VOLTAGE 5.0
 
 float temp_f;
 void *i2c_data;
@@ -40,6 +41,17 @@ void setup()
 
 void loop()
 {
+	uint16_t tmp36_reading = analogRead(TMP36);
+
+	// calculate reading in volts
+	float temp = tmp36_reading * TMP36_VOLTAGE;
+	temp /= 1024.0;
+
+	// convert from 10mV per degree Celsius with 500mV offset
+	temp = (temp - 0.5) * 100;
+
+	// convert to degrees Fahrenheit
+	temp_f = (temp * 9.0 / 5.0) + 32.0;
 }
 
 void i2c_request_handler(void)
