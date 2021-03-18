@@ -33,6 +33,7 @@ void setup()
 
 void loop()
 {
+	// get temperature reading
 	float temp_reading;
 	request_data(
 		&temp_reading,
@@ -41,6 +42,7 @@ void loop()
 		I2C_SLAVE_1
 		);
 
+	// calculate motor speed based on temperature
 	uint8_t motor_speed = map(
 			constrain(temp_reading,
 				TEMPERATURE_LIMIT_LOW_F,
@@ -52,6 +54,7 @@ void loop()
 			);
 	send_data(&motor_speed, sizeof(motor_speed), I2C_SLAVE_2);
 
+	// determine RGB color based on temperature
 	uint8_t color[3];
 	if (temp_reading < 65) {
 		// white
@@ -67,6 +70,7 @@ void loop()
 	}
 	send_data(color, sizeof(color), I2C_SLAVE_3);
 
+	// send all data to slave-4 to display on LCD
 	send_data(&temp_reading, sizeof(temp_reading), I2C_SLAVE_4);
 	send_data(&motor_speed,  sizeof(motor_speed),  I2C_SLAVE_4);
 	send_data(color,         sizeof(color),        I2C_SLAVE_4);
