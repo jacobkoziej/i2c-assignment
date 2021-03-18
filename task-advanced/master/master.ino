@@ -23,6 +23,8 @@
 #define TEMPERATURE_LIMIT_HIGH_F 100.0
 #define TEMPERATURE_LIMIT_LOW_F  32.0
 
+#define ARTIFICIAL_DELAY 500
+
 
 void setup()
 {
@@ -68,4 +70,6 @@ void loop()
 	send_data(&temp_reading, sizeof(temp_reading), I2C_SLAVE_4);
 	send_data(&motor_speed,  sizeof(motor_speed),  I2C_SLAVE_4);
 	send_data(color,         sizeof(color),        I2C_SLAVE_4);
+
+	delay(ARTIFICIAL_DELAY);
 }
