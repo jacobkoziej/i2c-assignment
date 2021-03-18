@@ -49,4 +49,18 @@ void loop()
 			0xFF
 			);
 	send_data(&motor_speed, sizeof(motor_speed), I2C_SLAVE_2);
+
+	uint8_t color[3];
+	if (temp_reading < 65) {
+		// white
+		memset(color, 0xFF, sizeof(color));
+	} else if (temp_reading < 85) {
+		// green
+		memset(color, 0, sizeof(color));
+		color[2] = 0xFF;
+	} else {
+		// red
+		memset(color, 0, sizeof(color));
+		color[0] = 0xFF;
+	}
 }
