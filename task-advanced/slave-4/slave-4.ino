@@ -47,6 +47,11 @@ size_t i2c_datasiz;
 void setup()
 {
 	lcd.begin(LCD_COL, LCD_ROW);
+	lcd.print(F("TEMP:"));
+	lcd.setCursor(8, 0);
+	lcd.print(F("SPEED:"));
+	lcd.setCursor(0, 1);
+	lcd.print(F("COL:"));
 
 	Wire.begin(I2C_SLAVE_4);
 	Wire.onReceive(i2c_receive_handler);
