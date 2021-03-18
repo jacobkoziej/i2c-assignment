@@ -83,7 +83,7 @@ void loop()
 
 		// write updated values
 		lcd.setCursor(5, 0);
-		lcd.print((temp_f >= 0) ? (int)temp_f : 0, HEX);
+		lcd.print((temp_f >= 0) ? (int) temp_f : 0, HEX);
 		lcd.setCursor(14, 0);
 		lcd.print(motor_speed, HEX);
 		lcd.setCursor(4, 1);
