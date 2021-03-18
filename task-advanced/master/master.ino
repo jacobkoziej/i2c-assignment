@@ -48,4 +48,5 @@ void loop()
 			0x00,
 			0xFF
 			);
+	send_data(&motor_speed, sizeof(motor_speed), I2C_SLAVE_2);
 }
