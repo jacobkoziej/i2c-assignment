@@ -46,6 +46,8 @@ uint8_t rgb_color[3];
 void *i2c_data[3];
 size_t i2c_datasiz[3];
 
+volatile bool refresh = true;
+
 
 void setup()
 {
@@ -69,6 +71,30 @@ void setup()
 
 void loop()
 {
+	// TinkerCAD hangs with sprintf() so we must settle for this hack
+	if (refresh) {
+		// clear values
+		lcd.setCursor(5, 0);
+		lcd.print(F("00"));
+		lcd.setCursor(14, 0);
+		lcd.print(F("00"));
+		lcd.setCursor(4, 1);
+		lcd.print(F("000000"));
+
+		// write updated values
+		lcd.setCursor(5, 0);
+		lcd.print((temp_f >= 0) ? (int)temp_f : 0, HEX);
+		lcd.setCursor(14, 0);
+		lcd.print(motor_speed, HEX);
+		lcd.setCursor(4, 1);
+		lcd.print(rgb_color[0], HEX);
+		lcd.setCursor(6, 1);
+		lcd.print(rgb_color[1], HEX);
+		lcd.setCursor(8, 1);
+		lcd.print(rgb_color[2], HEX);
+
+		refresh = false;
+	}
 }
 
 void i2c_receive_handler(int bytes)
@@ -77,4 +103,6 @@ void i2c_receive_handler(int bytes)
 	if (i >= 3) i = 0;
 	receive_data(i2c_data[i], i2c_datasiz[i], bytes);
 	++i;
+
+	refresh = true;
 }
