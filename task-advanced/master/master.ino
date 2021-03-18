@@ -64,4 +64,8 @@ void loop()
 		color[0] = 0xFF;
 	}
 	send_data(color, sizeof(color), I2C_SLAVE_3);
+
+	send_data(&temp_reading, sizeof(temp_reading), I2C_SLAVE_4);
+	send_data(&motor_speed,  sizeof(motor_speed),  I2C_SLAVE_4);
+	send_data(color,         sizeof(color),        I2C_SLAVE_4);
 }
