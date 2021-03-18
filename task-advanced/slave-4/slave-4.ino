@@ -40,8 +40,11 @@ LiquidCrystal lcd(
 		LCD_D7
 		);
 
-void *i2c_data;
-size_t i2c_datasiz;
+float temp_f;
+uint8_t motor_speed;
+uint8_t rgb_color[3];
+void *i2c_data[3];
+size_t i2c_datasiz[3];
 
 
 void setup()
@@ -53,6 +56,13 @@ void setup()
 	lcd.setCursor(0, 1);
 	lcd.print(F("COL:"));
 
+	i2c_data[0]    = &temp_f;
+	i2c_datasiz[0] = sizeof(temp_f);
+	i2c_data[1]    = &motor_speed;
+	i2c_datasiz[1] = sizeof(motor_speed);
+	i2c_data[2]    = rgb_color;
+	i2c_datasiz[2] = sizeof(rgb_color);
+
 	Wire.begin(I2C_SLAVE_4);
 	Wire.onReceive(i2c_receive_handler);
 }
@@ -63,5 +73,8 @@ void loop()
 
 void i2c_receive_handler(int bytes)
 {
-	receive_data(i2c_data, i2c_datasiz, bytes);
+	static uint8_t i = 0;
+	if (i >= 3) i = 0;
+	receive_data(i2c_data[i], i2c_datasiz[i], bytes);
+	++i;
 }
