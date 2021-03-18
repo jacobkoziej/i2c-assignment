@@ -46,7 +46,7 @@ uint8_t rgb_color[3];
 void *i2c_data[3];
 size_t i2c_datasiz[3];
 
-volatile bool refresh = true;
+volatile bool refresh = false;
 
 
 void setup()
@@ -75,11 +75,11 @@ void loop()
 	if (refresh) {
 		// clear values
 		lcd.setCursor(5, 0);
-		lcd.print(F("00"));
+		lcd.print(F("  "));
 		lcd.setCursor(14, 0);
-		lcd.print(F("00"));
+		lcd.print(F("  "));
 		lcd.setCursor(4, 1);
-		lcd.print(F("000000"));
+		lcd.print(F("      "));
 
 		// write updated values
 		lcd.setCursor(5, 0);
