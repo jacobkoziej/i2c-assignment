@@ -63,4 +63,5 @@ void loop()
 		memset(color, 0, sizeof(color));
 		color[0] = 0xFF;
 	}
+	send_data(color, sizeof(color), I2C_SLAVE_3);
 }
