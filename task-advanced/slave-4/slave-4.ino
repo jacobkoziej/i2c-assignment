@@ -16,9 +16,29 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include <LiquidCrystal.h>
 #include <Wire.h>
 
 #include "common.h"
+
+#define LCD_RS     2
+#define LCD_ENABLE 3
+#define LCD_D4     4
+#define LCD_D5     5
+#define LCD_D6     6
+#define LCD_D7     7
+
+#define LCD_COL 16
+#define LCD_ROW 2
+
+LiquidCrystal lcd(
+		LCD_RS,
+		LCD_ENABLE,
+		LCD_D4,
+		LCD_D5,
+		LCD_D6,
+		LCD_D7
+		);
 
 void *i2c_data;
 size_t i2c_datasiz;
@@ -26,6 +46,8 @@ size_t i2c_datasiz;
 
 void setup()
 {
+	lcd.begin(LCD_COL, LCD_ROW);
+
 	Wire.begin(I2C_SLAVE_4);
 	Wire.onReceive(i2c_receive_handler);
 }
